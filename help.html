@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guide - Masta ATC</title>
+  <link href="css/tailwind.min.css" rel="stylesheet">
+  <link href="css/app.css" rel="stylesheet">
+  <link rel="shortcut icon" href="favicon.png" />
+</head>
+
+<body id="helpBody">
+  <div class="helpContainer">
+    <div class="center">
+      <h1>Welcome to Masta ATC</h1><br />
+      <img class="logo" src="/img/logo.png" alt="Masta ATC Logo">
+      <p class="h1">Dive into the world of Air Traffic Control.</p>
+    </div>
+    <div>
+      <p>In Masta ATC, you will assume the role of an air traffic controller, tasked with managing the flow of aircraft
+        within a designated airspace, ensuring their safe takeoff, flight, and landing.</p>
+      <h2>Disclaimer</h2>
+      <p>This is just a game that simulates the activities of an Air Traffic Controller (ATC); at no point should it be
+        regarded as formal training or education for performing the role of a real ATC.</p>
+      <h2>User Interface</h2>
+      <p>The game interface is divided into two main sections: the Game Map (on the left) and the Control Panel (on the
+        right).</p>
+      <h3>Game Map</h3>
+      <p>The map provides a visual representation of the airspace, including:</p>
+      <ul>
+        <li><b>Airport and Runways</b>, located at the center of the map:
+          <img class="imag" src="/img/runway.jpg" alt="Runway">
+        </li>
+        <li><b>Flights</b>, represented by RED DOT rounded by a safety distancie circle, each with its call sign, speed
+          (kts), and altitude (ft):
+          <img class="imag" src="/img/dep.jpg" alt="Departure"><img class="imag" src="/img/arr.jpg" alt="Arrival">
+        </li>
+        <li><b>Waypoints</b>, key points on the map that planes can use to navigate:
+          <img class="imag" src="/img/waypoint.png" alt="Waypoint">
+        </li>
+        <li><b>ILS Zones</b>, areas around the airport to start the approach procedure:
+          <img class="imag" src="/img/ils-zone.png" alt="ILS Zone">
+        </li>
+      </ul>
+      <h3>Control Panel</h3>
+      <p>This panel includes:</p>
+      <ul>
+        <li><b>Flight List</b>, displays ongoing flights, with details such as call sign, destination, speed, and
+          altitude in each card.</li>
+        <li>White border indicates an active flight. Red border indicates an inactive flight.</li>
+        <li>Green is for departures, purple for arrivals.<br />
+          <img src="/img/flightlist.png" alt="Flight List">
+        </li>
+        <li><b>Flight Controls</b>, allows you to adjust the Heading, Direct to Waypoint Speed, and Altitude for the
+          selected flight.<br /><br />
+          <img src="/img/control.png" alt="Control Panel">
+          
+        </li>
+      </ul>
+      <h2>Main Functions</h2>
+      <h3>Selecting a Flight</h3>
+      <p>Click on a flight on the map or in the flight list of the control panel to select it. This will enable you to
+        adjust its parameters from the control panel.</p>
+      <h3>Modifying Flight Parameters</h3>
+      <p>Once a flight is selected, you can modify its parameters:</p>
+      <ul>
+        <li><b>Heading:</b> Defines the direction in which the plane should move. Note that you must use nautical
+          degrees: 0 for North, 90 for East.<br />
+          <img src="/img/heading.png" alt="Heading">
+        </li>
+        <li><b>Direct to:</b> Orders the plane to head directly to a specified waypoint on the map.</li>
+        <li><b>Heading and Direct to Waypoint are mutually exclusive.</b> When you input a value in one of them, the other will be cleared.</li>
+        <li><b>Speed:</b> Adjusts the plane's speed in knots. (min 160, max 480).</li>
+        <li><b>Altitude:</b> Sets the plane's altitude in feet or Flight Level (feet/100). (min 3000ft, max 20000ft)<br />
+          When you set an altitude bellow 10,000ft your speed will be set automatically to 250kts.
+        </li>
+      </ul>
+      <p><b>Note:</b> You must click the "Send Command" button to give the instructions to the plane.</p>
+      <h3>Takeoff and Landing</h3>
+      <ul>
+        <li><b>Takeoff:</b> When a plane is ready for takeoff, you can authorize its departure by clicking on the yellow
+          icon on the flight card <img class="imag" src="/img/takeofficon.png" alt=""> or by checking the box in the
+          flight control <img class="imag" src="/img/takeoffcheck.png" alt=""></li>
+        <li><b>Landing:</b> For landing, when a plane is in an ILS Zone below 3500ft, you can authorize its approach
+          procedure by clicking on the yellow icon on the flight card <img class="imag" src="/img/appicon.png" alt="">
+          or by checking the box in the flight control <img class="imag" src="/img/appbtn.png" alt=""><br />The flight
+          will approach the assigned runway and land automatically.</li>
+        <li><b>Abort Landing:</b> When a flight is in approach procedure, you can click the <b>Abort Approaching</b>
+          button anytime for cancel approach, your flight will be keep their current heading, but set their speed to
+          250kts and
+          altitude to 3000ft.</li>
+      </ul>
+      <h2>Useful Tips</h2>
+      <h3>Prioritize Safety:</h3>
+      <p>Ensure to maintain a safe distance between planes at all times. A safe distance means not letting the circles
+        touch with an altitude difference of less than 1000ft.</p>
+      <h3>Manage Efficiently:</h3>
+      <p>Optimize routes and altitudes to keep air traffic orderly and efficient.</p>
+      <h3>Pay Attention to Waypoints:</h3>
+      <p>Use waypoints to guide planes effectively through the airspace. If a plane reaches a waypoint without an
+        additional command, it will fly in circles near the waypoint.</p>
+    </div>
+  </div>
+</body>
+
+</html>

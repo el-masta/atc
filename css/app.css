@@ -1,0 +1,378 @@
+:root {
+  --black: #000;
+  --dark-gray: #111;
+  --dark-green: #0d2a2f;
+  --teal-green: #1e606b;
+  --purple1: #8b66f7;
+  --purple2: #c86eff;
+  --green1: #696;
+  --green2: #258a00;
+  --red: #880404;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--black);
+}
+
+#map {
+  height: 100vh;
+  width: calc(100vw - 273px);
+  overflow: hidden;
+}
+
+#right-bar {
+  height: 100vh;
+  width: 270px;
+  background-color: var(--black);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#traffic-wrapper {
+  background-color: var(--teal-green);
+  height: calc(100vh - 250px);
+  overflow: auto;
+}
+
+#panel {
+  background-color: #333;
+  height: 245px;
+  font-family: Helvetica;
+}
+
+.lblCall {
+  font-size: 14px;
+  color: white;
+}
+
+#fligtControl {
+  background-color: #222;
+  height: 192px;
+  text-align: center;
+  font-size: 12px;
+  padding: 8px;
+}
+
+#fligtControl .control {
+  width: 110px;
+  color: #fff;
+  display: inline-block;
+  margin: 0 7px 0 7px;
+}
+
+#fligtControl .controlCheck {
+  width: 230px;
+  color: #fff;
+  display: block;
+}
+
+#fligtControl .controlCheck input,
+#fligtControl .controlCheck label {
+  margin: 3px;
+  color: #fff;
+}
+
+#fligtControl .control input {
+  width: 100%;
+  margin: 3px;
+  background-color: #000;
+  color: #fff;
+  border: 1px #34578e solid;
+  border-radius: 7px;
+  padding: 2px;
+  text-transform: uppercase;
+}
+
+#fligtControl .control label {
+  color: #fff;
+  margin: 3px;
+}
+
+.sendCommand {
+  display: block;
+  width: 200px;
+  height: 25px;
+  text-align: center;
+  background-color: #567dfc;
+  font-size: 12px;
+  color: #fff;
+  padding: 3px;
+  cursor: pointer;
+  margin: 7px auto 0 auto;
+  border-radius: 5px;
+}
+
+.sendCommand:hover {
+  background-color: #7897ff;
+}
+
+#msgPanel {
+  height: 25px;
+  text-align: center;
+  background-color: #fff;
+  font-size: 11px;
+  color: #6c0000;
+  padding: 5px;
+}
+
+#gameControl {
+  height: 28px;
+  text-align: center;
+  background-color: #111;
+  font-size: 12px;
+  color: #fff;
+  padding: 5px;
+  cursor: pointer;
+  width: 90%;
+  display: inline-block;
+}
+
+#gameControl:hover {
+  background-color: #222;
+}
+
+#help {
+  height: 28px;
+  text-align: center;
+  background-color: #567dfc;
+  font-size: 12px;
+  color: #fff;
+  width: 10%;
+  padding: 5px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+#map-svg {
+  background: var(--dark-green);
+  font-size: 8p;
+  width: 100%;
+  height: auto;
+}
+
+.mapTag {
+  font: 0.55em 'Helvetica';
+  fill: #fff;
+}
+
+.ils-line {
+  stroke: #8aa8ad;
+  stroke-width: 1;
+}
+
+.fly-line {
+  stroke: #91c849;
+  stroke-width: 1;
+}
+
+#circles circle {
+  stroke: #15434c;
+}
+
+.arrDistC {
+  stroke: var(--purple2);
+}
+
+.depDistC {
+  stroke: var(--green2);
+}
+
+.arrTrail {
+  stroke: rgba(200, 110, 255, 0.5);
+}
+
+.depTrail {
+  stroke: rgba(37, 138, 0, 0.5);
+}
+
+.flightCard {
+  display: block;
+  height: 45px;
+  margin: 3px;
+  padding: 3px;
+  font-family: Helvetica;
+  font-size: 11px;
+  color: #fff;
+  border-radius: 3px;
+}
+
+.manita {
+  cursor: pointer;
+}
+
+.selectedFly {
+  margin-left: 10px;
+  border-left-width: 5px !important;
+  border-right-width: 5px !important;
+  border-bottom-width: 2px !important;
+  border-top-width: 2px !important;
+}
+
+.arrCard {
+  background-color: var(--purple1);
+  border: white 1px solid;
+}
+
+.depCard {
+  background-color: var(--green1);
+}
+
+.flActive {
+  border: white 1px solid;
+}
+
+.flInactive {
+  border: #f00 1px solid;
+}
+
+.flightCard .bold {
+  font-weight: 900;
+}
+
+.flightCard .cardEl {
+  display: inline-block;
+  width: 52px;
+}
+
+.flightCard .cardEl2 {
+  display: inline-block;
+  width: 104px;
+}
+
+.flightCard .takeoff {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-image: url('../img/takeoff.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.flightCard .takeoffing {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-image: url('../img/takeoffing.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.flightCard .approach {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-image: url('../img/approach.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.flightCard .landing {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-image: url('../img/landing.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.f-red {
+  color: var(--red);
+}
+
+.fz-10 {
+  font-size: 10px;
+}
+
+.fillFlyActive {
+  fill: rgba(253, 236, 123, 0.08);
+}
+
+.fillFlyInactive {
+  fill: rgba(0, 0, 0, 0.15);
+}
+
+.fillWarning {
+  fill: rgba(253, 123, 123, 0.188);
+}
+
+
+.SVGselectedText {
+  font: 0.55em 'Helvetica';
+  fill: #fdec7b;
+  font-weight: 900;
+}
+
+*:disabled {
+  opacity: 0.5;
+}
+
+#helpBody {
+  background-color: var(--teal-green);
+  color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: .8rem;
+}
+
+.helpContainer {
+  width: 720px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #fff;
+  color: #444;
+  border-radius: 20px;
+}
+
+.center {
+  text-align: center;
+  align-items: center;
+}
+
+p {
+  line-height: 130%;
+  margin-top: 10px;
+}
+
+h1,
+.h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 30px;
+  border-top: 4px solid var(--teal-green);
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+  margin: auto;
+}
+
+li {
+  margin-left: 25px;
+  margin-bottom: 10px;
+  border-top: 1px solid #fff;
+}
+
+.imag {
+  display: inline;
+  margin: 5px;
+}

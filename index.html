@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masta ATC</title>
+  <link href="css/tailwind.min.css" rel="stylesheet">
+  <link href="css/app.css" rel="stylesheet">
+  <link rel="shortcut icon" href="favicon.png" />
+</head>
+
+<body>
+  <div id="app">
+    <game-map :angle="rwAngle1" :rwnames="rwNames" :waypoints="waypoints" :flights="flights" :selectedfly="selectedFly"
+      :warning="inWarning" :ils="ilsDrawsDtext" :score="score" :completed="completedFly" @setactive="setActiveFlight">
+    </game-map>
+    <div id="right-bar">
+      <traffic-wrap :flights="flights" :selectedfly="selectedFly" @setactive="setActiveFlight" @takeoff="setToTakeoff"
+        @settoapproach="setToApproach">
+      </traffic-wrap>
+      <div id="panel">
+        <!-- Controles de aeronave -->
+        <div id="fligtControl">
+          <template v-if="selectedFly !=''">
+            <div class="lblCall">
+              {{selectedFly}}
+            </div>
+            <template v-if="!flights[selectedType][selectedFly].inApproach">
+              <div class="control">
+                <label for="inpHdg">Heading &deg;:</label>
+                <input type="number" id="inpHdg" v-model="selectedParams.hdg" @change="unsetWpText"
+                  onclick="this.select();" />
+              </div>
+              <div class="control">
+                <label for="inpWayP">Direct to Waypoint:</label>
+                <input list="wpList" id="inpWayP" v-model="selectedParams.wayP" @change="unsetHdgText"
+                  onclick="this.select();" />
+                <datalist id="wpList">
+                  <option v-for="(waypoint,wpId) in mixedWayPoints" :value="wpId"></option>
+                </datalist>
+              </div>
+              <div class="control">
+                <label for="inpSpd">Speed (Kts):</label>
+                <input type="number" id="inpSpd" v-model="selectedParams.spd" onclick="this.select();" />
+              </div>
+              <div class="control">
+                <label for="inpAlt">Altitude (FT or FL):</label>
+                <input type="number" id="inpAlt" v-model="selectedParams.alt" onclick="this.select();" />
+              </div>
+              <div class="controlCheck" v-show="!flights[selectedType][selectedFly].active">
+                <input type="checkbox" id="chkTakeOff" v-model="selectedParams.takeoff" /><label for="chkTakeOff">Order
+                  to
+                  Takeoff</label>
+              </div>
+              <div class="sendCommand" v-if="flights[selectedType][selectedFly].approachTo!=''"
+                @click="setToApproach(selectedFly)">
+                Clear to Approach to {{flights[selectedType][selectedFly].approachTo}}
+              </div>
+              <div class="sendCommand" @click="setCommandToFly">
+                Send Command
+              </div>
+            </template>
+            <template v-else>
+              <div class="controlCheck">
+                In approach procedure to runway: {{flights[selectedType][selectedFly].approachTo}}
+              </div>
+              <div class="sendCommand" @click="setAbortApproach(selectedFly)">
+                Abort Approach
+              </div>
+            </template>
+          </template>
+        </div>
+
+        <!-- Panel de mensajes -->
+        <div id="msgPanel">{{msgPanelTxt}}</div>
+
+        <!-- Control de juego -->
+        <div>
+          <div id="gameControl" @click="tooglePlay">
+            <template v-if="playInterval === null">
+              Play
+            </template>
+            <template v-else>
+              Pause
+            </template>
+          </div>
+          <div id="help" @click="showHelp">?</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script src="js/vue3.4.js"></script>
+  <script src="components/App.js"></script>
+  <script src="components/GameMap.js"></script>
+  <script src="components/Traffic.js"></script>
+  <script>atc.mount('#app');</script>
+</body>
+
+</html>
