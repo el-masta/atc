@@ -1,5 +1,5 @@
 atc.component('game-map', {
-  props: ['angle', 'rwnames', 'waypoints', 'flights', 'selectedfly', 'warning','ils', 'score', 'completed'],
+  props: ['angle', 'rwnames', 'waypoints', 'flights', 'selectedfly', 'warning', 'ils', 'score', 'completed'],
   emits: ['setactive'],
   template: /*html*/
     `
@@ -18,8 +18,6 @@ atc.component('game-map', {
           fill="none" stroke="#666" stroke-dasharray="20, 20"
           :transform="'translate(20 ' + Math.round( (mapSize.yOffset / mapSize.scale) + 20) +')'">
         </rect>
-        <!-- Puntaje -->
-        <text class="mapTag" x="25" :y="Math.round( (mapSize.yOffset / mapSize.scale) + 35)" >Points: {{Math.round(score.points, 0)}} Record: {{Math.round(score.record, 0)}}</text>
         <!-- Completed -->
         <text class="mapTag" x="200" :y="Math.round( (mapSize.yOffset / mapSize.scale) + 35)" >Completed: {{completed.dep}} departures,   {{completed.arr}} arrivals</text>
 
@@ -78,6 +76,8 @@ atc.component('game-map', {
             
           </g>
         </g>
+        <!-- Puntaje -->
+        <text class="mapTag" x="25" :y="Math.round( (mapSize.yOffset / mapSize.scale) + 35)" >Points: {{Math.round(score.points, 0)}} Record: {{Math.round(score.record, 0)}}</text>
       </svg>
     </div>
   `,

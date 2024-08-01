@@ -12,6 +12,11 @@
 
 <body>
   <div id="app">
+    <!-- Juego Pausado -->
+    <div id="modal" v-if="playInterval==null">
+      <div id="pause">Paused</div>
+    </div>
+    <!-- /Juego Pausado -->
     <game-map :angle="rwAngle1" :rwnames="rwNames" :waypoints="waypoints" :flights="flights" :selectedfly="selectedFly"
       :warning="inWarning" :ils="ilsDrawsDtext" :score="score" :completed="completedFly" @setactive="setActiveFlight">
     </game-map>

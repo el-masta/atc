@@ -48,7 +48,7 @@ const atc = Vue.createApp({
       completedFly: {
         dep: 0,
         arr: 0,
-      }
+      },
     };
   },
   async mounted() {
@@ -69,7 +69,7 @@ const atc = Vue.createApp({
     }
 
     // Inicia el juego
-    this.runGame();
+    // this.runGame();
 
     // Evento Key para enviar comando
     document.addEventListener(
@@ -152,7 +152,13 @@ const atc = Vue.createApp({
           const x = Math.floor(Math.random() * 1500) + 100;
           const y = Math.floor(Math.random() * 1500) + 100;
 
-          if (x > 20 && x < 1580 && y > this.Ymin && y < this.Ymax && !this.waypoints[wpName]) {
+          const xValid1 = (x > 20 && x < 700);
+          const xValid2 = (x > 1000 && x < 1580);
+          const yValid1 = (y > this.Ymin && y < 700);
+          const yValid2 = (y > 1000 && y < this.Ymax);
+          const waypointNotExist = !this.waypoints[wpName];
+
+          if ((xValid1 || xValid2) && (yValid1 || yValid2) && waypointNotExist) {
             const esValido = Object.values(this.waypoints).every(puntoExistente => this.calcDist(x, y, puntoExistente.x, puntoExistente.y) >= 200);
 
             // Si el waypoint es válido y no existe un waypoint con el mismo nombre
@@ -948,6 +954,8 @@ const atc = Vue.createApp({
     recalcular: async function () {
       let activePos = [];
       let inWarning = [];
+      let inTakeoff = this.inProcedures("1Departure");
+      let inApproach = this.inProcedures("2Arrival");
       for (let type in this.flights) {
         for (let flightId in this.flights[type]) {
           let flight = this.flights[type][flightId];
@@ -1010,9 +1018,33 @@ const atc = Vue.createApp({
 
             this.flights[type][flightId] = flight;
           }
+          if (!flight.active) {
+            if (!inApproach && !inTakeoff) {
+              this.setToTakeoff(flightId);
+              inTakeoff = true;
+            }
+          }
         }
       }
       this.inWarning = [...new Set(inWarning)];
+    },
+
+    inProcedures: function (type) {
+      var inProcedure = false
+      for (let flightId in this.flights[type]) {
+        let flight = this.flights[type][flightId];
+        if (type == "1Departure") {
+          if (flight.active && flight.params.current.alt < 1000) {
+            inProcedure = true;
+          }
+        }
+        if (type == "2Arrival") {
+          if (flight.params.current.spd < 200) {
+            inProcedure = true;
+          }
+        }
+      }
+      return inProcedure;
     },
 
     // Juego ejecutándose

@@ -121,7 +121,7 @@
 #gameControl {
   height: 28px;
   text-align: center;
-  background-color: #111;
+  background-color: #770000;
   font-size: 12px;
   color: #fff;
   padding: 5px;
@@ -375,4 +375,24 @@ li {
 .imag {
   display: inline;
   margin: 5px;
+}
+
+#modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: calc(100vw - 273px);
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  /* backdrop-filter: blur(1px); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#pause {
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
 }

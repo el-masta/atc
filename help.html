@@ -23,6 +23,12 @@
       <h2>Disclaimer</h2>
       <p>This is just a game that simulates the activities of an Air Traffic Controller (ATC); at no point should it be
         regarded as formal training or education for performing the role of a real ATC.</p>
+      <h2>Notes</h2>
+      <h3>Paused game</h3>
+      <p>At the beginning of the game, it is paused due to audio permission issues. You will need to start it by pressing the large red button located at the bottom right corner of the game screen.</p>
+      <h3>Auto Takeoff</h3>
+      <p>The game features an automatic takeoff system: <b>when there are no flights in 
+        takeoff procedures and have enough space in approachs</b>, the next flight on the Departures list will be indicated for takeoff. You must control the altitude and destination.</p>
       <h2>User Interface</h2>
       <p>The game interface is divided into two main sections: the Game Map (on the left) and the Control Panel (on the
         right).</p>
@@ -71,6 +77,7 @@
         </li>
         <li><b>Direct to:</b> Orders the plane to head directly to a specified waypoint on the map.</li>
         <li><b>Heading and Direct to Waypoint are mutually exclusive.</b> When you input a value in one of them, the other will be cleared.</li>
+        <li><b>You can indicate a CallSign (Flight number) as a waypoint, to follow them.</b></li>
         <li><b>Speed:</b> Adjusts the plane's speed in knots. (min 160, max 480).</li>
         <li><b>Altitude:</b> Sets the plane's altitude in feet or Flight Level (feet/100). (min 3000ft, max 20000ft)<br />
           When you set an altitude bellow 10,000ft your speed will be set automatically to 250kts.
@@ -79,9 +86,7 @@
       <p><b>Note:</b> You must click the "Send Command" button to give the instructions to the plane.</p>
       <h3>Takeoff and Landing</h3>
       <ul>
-        <li><b>Takeoff:</b> When a plane is ready for takeoff, you can authorize its departure by clicking on the yellow
-          icon on the flight card <img class="imag" src="/img/takeofficon.png" alt=""> or by checking the box in the
-          flight control <img class="imag" src="/img/takeoffcheck.png" alt=""></li>
+        <li><b>Remember the Auto Takeoff feature!</b></li>
         <li><b>Landing:</b> For landing, when a plane is in an ILS Zone below 3500ft, you can authorize its approach
           procedure by clicking on the yellow icon on the flight card <img class="imag" src="/img/appicon.png" alt="">
           or by checking the box in the flight control <img class="imag" src="/img/appbtn.png" alt=""><br />The flight
@@ -100,6 +105,10 @@
       <h3>Pay Attention to Waypoints:</h3>
       <p>Use waypoints to guide planes effectively through the airspace. If a plane reaches a waypoint without an
         additional command, it will fly in circles near the waypoint.</p>
+        <h2>Scoring System</h2>
+        <p>When a takeoff has reached its destination: 50 points.</p>
+        <p>For a correct landing: 100 points.</p>
+        <p>For letting a flight exit the map: -1,000 points.</p>
     </div>
   </div>
 </body>
